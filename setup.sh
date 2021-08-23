@@ -103,13 +103,11 @@ if [ $? -eq 0 ]; then
 else
     echo "    -- Registering project directory in llvm-project/clang-tools-extra/CMakeLists.txt"
 
+    echo -e "\nadd_subdirectory(uqcs_demo)\n" >> llvm-project/clang-tools-extra/CMakeLists.txt
     if [ $? -ne 0 ]; then 
-        echo -e "\nadd_subdirectory(uqcs_demo)\n" >> llvm-project/clang-tools-extra/CMakeLists.txt
-        if [ $? -ne 0 ]; then 
-            echo "    -- An error occurred while registering the project directory"
-            echo "    -- Aborting setup"
-            exit 1
-        fi
+        echo "    -- An error occurred while registering the project directory"
+        echo "    -- Aborting setup"
+        exit 1
     fi
 fi
 
